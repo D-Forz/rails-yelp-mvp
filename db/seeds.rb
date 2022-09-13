@@ -17,12 +17,14 @@ puts 'DB cleaned'
     phone_number: Faker::PhoneNumber.cell_phone,
     category: %w[chinese italian japanese french belgian].sample
   )
-  review = Review.new(
-    rating: rand(0..5),
-    content: Faker::Restaurant.review
-  )
-  review.restaurant = restaurant_instance
-  review.save
+  5.times do
+    review = Review.new(
+      rating: rand(0..5),
+      content: Faker::Restaurant.review
+    )
+    review.restaurant = restaurant_instance
+    review.save
+  end
   puts "Creating restaurant id: #{restaurant_instance.id}"
 end
 
