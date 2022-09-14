@@ -1,15 +1,31 @@
 <div class="container m-3">
   <h2><%= @restaurant.name %></h2>
-  <p>Address: <%= @restaurant.address %></p>
-  <p>Phone Number: <%= @restaurant.phone_number %></p>
-  <p>Category: <%= @restaurant.category %></p>
+  <table class="table table-hover">
+  <tbody>
+    <tr>
+      <th>Address</th>
+      <td scope="row"><%= @restaurant.address %></td>
+    </tr>
+    <tr>
+      <th>Phone Number</th>
+      <td scope="row"><%= @restaurant.phone_number %></td>
+    </tr>
+    <tr>
+      <th>Category</th>
+      <td scope="row"><%= @restaurant.category %></td>
+    </tr>
+  </tbody>
+</table>
   <br>
   <h3 class="list-inline-item align-middle">Reviews</h3> <%= link_to "Add Review",
   new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
   <div class="m-3">
     <ul class="list-group">
     <% @restaurant.reviews.each do |review| %>
-      <li class="list-group-item"><%= review.content %></li>
+      <li class="list-group-item">
+        <span class="badge bg-primary rounded-pill"><%= review.rating %></span>
+        <%= review.content %>
+      </li>
     <% end %>
     </ul>
   </div>
